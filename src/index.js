@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { VideoApp } from './components/VideoApp';
+import { AppStateProvider } from "./state";
 
 ReactDOM.render(
   <React.StrictMode>
-     <VideoApp />
+      <AppStateProvider>
+          <VideoApp />
+      </AppStateProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

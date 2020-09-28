@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useReducer, useState } from 'react';
 import { TwilioError } from 'twilio-video';
 import { settingsReducer, initialSettings, Settings, SettingsAction } from './settingsReducer';
-import { User } from 'firebase';
 
 export const StateContext = createContext(null);
 
@@ -14,8 +13,8 @@ export const StateContext = createContext(null);
   included in the bundle that is produced (due to tree-shaking). Thus, in this instance, it
   is ok to call hooks inside if() statements.
 */
-export default function AppStateProvider(props) {
-    const [error, setError] = useState<TwilioError | null>(null);
+export function AppStateProvider(props) {
+    const [error, setError] = useState(null);
     const [isFetching, setIsFetching] = useState(false);
     const [activeSinkId, setActiveSinkId] = useState('default');
     const [settings, dispatchSetting] = useReducer(settingsReducer, initialSettings);
