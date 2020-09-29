@@ -13,7 +13,7 @@ export function AudioTrack({ track }) {
     }, [track]);
 
     useEffect(() => {
-        audioEl.current?.setSinkId?.(activeSinkId);
+        audioEl.current && audioEl.current.setSinkId && audioEl.current.setSinkId(activeSinkId);
     }, [activeSinkId]);
 
     return null;
