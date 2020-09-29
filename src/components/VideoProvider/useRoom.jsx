@@ -27,8 +27,8 @@ export default function useRoom(localTracks, onError, options) {
     const connect = useCallback(
         token => {
             setIsConnecting(true);
-            return Video.connect(token, { ...optionsRef.current, tracks: [] }).then(
-                newRoom => {
+            return Video.connect(token, { ...optionsRef.current, tracks: [] })
+                .then(newRoom => {
                     setRoom(newRoom);
                     const disconnect = () => newRoom.disconnect();
 

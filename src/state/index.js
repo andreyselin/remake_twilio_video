@@ -19,7 +19,32 @@ export function AppStateProvider(props) {
     const [activeSinkId, setActiveSinkId] = useState('default');
     const [settings, dispatchSetting] = useReducer(settingsReducer, initialSettings);
 
-    let contextValue = {
+    const fetchToken = async (identity, roomName) => {
+        const headers = new window.Headers();
+        const params = new window.URLSearchParams({ identity, roomName });
+        const url = `${ process.env.REACT_APP_API }/token?${ params }`;
+        console.log('url:', url);
+        const result = await fetch(url, { headers })
+            .then(res => res.text());
+        console.log('Result:', result);
+        return result;
+    };
+
+    const getToken = async (identity, roomName) => {
+        setIsFetching(true);
+        return fetchToken(identity, roomName)
+            .then(res => {
+                setIsFetching(false);
+                return res;
+            })
+            .catch(err => {
+                setError(err);
+                setIsFetching(false);
+                return Promise.reject(err);
+            });
+    };
+
+    const contextValue = {
         error,
         setError,
         isFetching,
@@ -27,7 +52,7 @@ export function AppStateProvider(props) {
         setActiveSinkId,
         settings,
         dispatchSetting,
-        getToken: ()=>console.log('getToken called')
+        getToken
     };
 
     return <StateContext.Provider value={{ ...contextValue }}>{props.children}</StateContext.Provider>;

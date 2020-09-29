@@ -1,12 +1,12 @@
 const express = require('express');
-const app = express();
 const path = require('path');
+const cors = require('cors');
 const AccessToken = require('twilio').jwt.AccessToken;
+
+const app = express();
 const VideoGrant = AccessToken.VideoGrant;
-
 const { config } = require("./config");
-
-
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
