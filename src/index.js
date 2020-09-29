@@ -9,17 +9,6 @@ import { CssBaseline } from '@material-ui/core';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { theme } from "./theme";
 
-/*
-ReactDOM.render(
-  <React.StrictMode>
-      <AppStateProvider>
-          <VideoApp />
-      </AppStateProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-*/
-
 
 ReactDOM.render(
     <MuiThemeProvider theme={theme}>
