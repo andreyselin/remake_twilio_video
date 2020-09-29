@@ -5,7 +5,7 @@ import { Participant, Room } from 'twilio-video';
 
 export const selectedParticipantContext = createContext(null);
 
-export default function useSelectedParticipant() {
+export function useSelectedParticipant() {
     const [selectedParticipant, setSelectedParticipant] = useContext(selectedParticipantContext);
     return [selectedParticipant, setSelectedParticipant];
 }
