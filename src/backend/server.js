@@ -8,7 +8,7 @@ const VideoGrant = AccessToken.VideoGrant;
 const { config } = require("./config");
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../../build')));
 
 app.get('/token', (req, res) => {
     const { identity, roomName } = req.query;
@@ -20,6 +20,6 @@ app.get('/token', (req, res) => {
     console.log(`issued token for ${identity} in room ${roomName}`);
 });
 
-app.get('*', (_, res) => res.sendFile(path.join(__dirname, 'build/index.html')));
+app.get('*', (_, res) => res.sendFile(path.join(__dirname, '../../build/index.html')));
 
 app.listen(8081, () => console.log('token server running on 8081'));

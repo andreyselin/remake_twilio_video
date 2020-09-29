@@ -12,6 +12,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "is-plain-object": "^5.0.0",
+    "pm2": "^4.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
@@ -22,7 +23,8 @@
   "scripts": {
     "front": "react-scripts start",
     "server": "node src/backend/server.js",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "pm2": "pm2 start web.js --name \"twilio\""
   },
   "eslintConfig": {
     "extends": "react-app"
